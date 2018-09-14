@@ -9,14 +9,14 @@ angular.module('myApp.single', ['ngRoute'])
   });
 }])
 
-.controller('Single', ['$http', '$routeParams', function($http, $routeParams) {
+.controller('Single', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
 
     $http({
         method: 'GET',
         url: 'https://api.github.com/repos/'+$routeParams.owner+'/'+$routeParams.repo
     }).then(function successCallback(response) {
 
-        console.log(response);
+        $scope.item = response.data;
 
     }, function errorCallback(response) {
 

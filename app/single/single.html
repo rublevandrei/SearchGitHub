@@ -1,1 +1,25 @@
-single page
+<table>
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Url on GitHub</td>
+        <td>Description</td>
+        <td>Updated</td>
+        <td>Created</td>
+        <td>Stars</td>
+    </tr>
+    <tr ng-if="error">
+        <td colspan="4">Error: {{ error }}</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr ng-if="item">
+        <td>{{ item.name }}</td>
+        <td><a target="_blank" href="{{ item.html_url }}">link</a></td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.updated_at }}</td>
+        <td>{{ item.created_at }}</td>
+        <td>{{ item.stargazers_count }}</td>
+    </tr>
+    </tbody>
+</table>
