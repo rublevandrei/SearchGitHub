@@ -1,0 +1,33 @@
+<form ng-submit="search()">
+    <input type="search" ng-model="text" required>
+    <button type="submit">Search</button>
+    <select ng-model="select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+</form>
+
+<table>
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td>Description</td>
+            <td>Updated</td>
+            <td>Created</td>
+            <td>Stars</td>
+        </tr>
+        <tr ng-if="error">
+            <td colspan="4">Error: {{ error }}</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr ng-if="items" ng-repeat="item in items">
+            <td><a href="#!/single/{{ item.full_name }}">{{ item.name }}</td>
+            <td>{{ item.description }}</td>
+            <td>{{ item.updated_at }}</td>
+            <td>{{ item.created_at }}</td>
+            <td>{{ item.stargazers_count }}</td>
+        </tr>
+    </tbody>
+</table>
