@@ -14,14 +14,9 @@ angular.module('myApp.single', ['ngRoute'])
     $http({
         method: 'GET',
         url: 'https://api.github.com/repos/'+$routeParams.owner+'/'+$routeParams.repo
-    }).then(function successCallback(response) {
-
-        $scope.item = response.data;
-
-    }, function errorCallback(response) {
-
-        $scope.error = response.data.message;
-
-    });
+    }).then(
+        function successCallback(response){ $scope.item = response.data; },
+        function errorCallback(response){ $scope.error = response.data.message; }
+        );
 
 }]);

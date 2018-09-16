@@ -2,9 +2,10 @@
     <input type="search" ng-model="text" required>
     <button type="submit">Search</button>
     <select ng-model="select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
+        <option value>Select sort by option</option>
+        <option value="-created_at">Created newest</option>
+        <option value="created_at">Created oldest</option>
+        <option value="stargazers_count">By stars</option>
     </select>
 </form>
 
@@ -13,19 +14,17 @@
         <tr>
             <td>Name</td>
             <td>Description</td>
-            <td>Updated</td>
             <td>Created</td>
             <td>Stars</td>
         </tr>
         <tr ng-if="error">
-            <td colspan="4">Error: {{ error }}</td>
+            <td colspan="3">Error: {{ error }}</td>
         </tr>
     </thead>
     <tbody>
-        <tr ng-if="items" ng-repeat="item in items">
+        <tr ng-if="items" ng-repeat="item in items | orderBy: select">
             <td><a href="#!/single/{{ item.full_name }}">{{ item.name }}</td>
             <td>{{ item.description }}</td>
-            <td>{{ item.updated_at }}</td>
             <td>{{ item.created_at }}</td>
             <td>{{ item.stargazers_count }}</td>
         </tr>

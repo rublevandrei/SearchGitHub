@@ -16,17 +16,10 @@ angular.module('myApp.search', ['ngRoute'])
         $http({
             method: 'GET',
             url: 'https://api.github.com/search/repositories?q='+$scope.text
-        }).then(function successCallback(response) {
-
-            $scope.items = response.data.items;
-
-            console.log(response.data.items);
-
-        }, function errorCallback(response) {
-
-            $scope.error = response.data.message;
-
-        });
+        }).then(
+            function successCallback(response){ $scope.items = response.data.items; },
+            function errorCallback(response){ $scope.error = response.data.message; }
+            );
 
     };
 
