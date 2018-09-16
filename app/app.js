@@ -7,6 +7,6 @@ angular.module('myApp', [
   'myApp.search',
 ])
 .config(function($urlRouterProvider) {
-    $urlRouterProvider.when('', '/search');
+    $urlRouterProvider.otherwise('/search');
 
 });
