@@ -1,19 +1,22 @@
 'use strict';
 
-angular.module('myApp.single', ['ngRoute'])
+angular.module('myApp.single', ['ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/single/:owner/:repo', {
-    templateUrl: 'single/single.html',
-    controller: 'Single'
-  });
-}])
+.config(function($stateProvider) {
 
-.controller('Single', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+    $stateProvider
+        .state('single', {
+            url: '/single/:owner/:repo',
+            templateUrl: 'single/single.html',
+            controller: 'single',
+        });
+
+})
+.controller('single', ['$scope', '$http', '$stateParams', function($scope, $http, $stateParams) {
 
     $http({
         method: 'GET',
-        url: 'https://api.github.com/repos/'+$routeParams.owner+'/'+$routeParams.repo
+        url: 'https://api.github.com/repos/'+$stateParams.owner+'/'+$stateParams.repo
     }).then(
         function successCallback(response){ $scope.item = response.data; },
         function errorCallback(response){ $scope.error = response.data.message; }

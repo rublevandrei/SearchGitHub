@@ -9,7 +9,7 @@
     </select>
 </form>
 
-<table>
+<table ng-controller="search">
     <thead>
         <tr>
             <td>Name</td>
@@ -23,7 +23,7 @@
     </thead>
     <tbody>
         <tr ng-if="items" ng-repeat="item in items | orderBy: select">
-            <td><a href="#!/single/{{ item.full_name }}">{{ item.name }}</td>
+            <td><a href="#/single/{{ item.full_name }}">{{ item.name }}</a></td>
             <td>{{ item.description }}</td>
             <td>{{ item.created_at }}</td>
             <td>{{ item.stargazers_count }}</td>

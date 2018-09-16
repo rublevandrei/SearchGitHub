@@ -1,15 +1,18 @@
 'use strict';
 
-angular.module('myApp.search', ['ngRoute'])
+angular.module('myApp.search', ['ui.router'])
 
-.config(['$routeProvider', function($routeProvider) {
-  $routeProvider.when('/search', {
-    templateUrl: 'search/search.html',
-    controller: 'Search'
-  });
-}])
+.config(function($stateProvider) {
 
-.controller('Search', ['$scope', '$http', function($scope, $http) {
+    $stateProvider
+        .state('search', {
+            url: '/search',
+            templateUrl: 'search/search.html',
+            controller: 'search',
+        });
+
+})
+.controller('search', ['$scope', '$http', function($scope, $http) {
 
     $scope.search = function() {
 
@@ -23,4 +26,4 @@ angular.module('myApp.search', ['ngRoute'])
 
     };
 
-}])
+}]);

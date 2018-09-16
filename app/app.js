@@ -2,12 +2,11 @@
 
 // Declare app level module which depends on views, and components
 angular.module('myApp', [
-  'ngRoute',
+    'ui.router',
   'myApp.single',
   'myApp.search',
 ])
-.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
+.config(function($urlRouterProvider) {
+    $urlRouterProvider.when('', '/search');
 
-  $routeProvider.otherwise({redirectTo: '/search'});
-}]);
+});
